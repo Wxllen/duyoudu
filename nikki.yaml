@@ -16,34 +16,32 @@ proxies:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🚀 默认代理,♻️ 自动选择,♻️ 台湾自动 , ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动,  🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+pr: &pr {type: select, proxies: [🚀 默认代理,♻️ 自动选择,♻️ 台湾自动 , ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, 直连]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动,  🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🌐 全部节点, 直连]}
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动, 直连]}
   - {name: 📹 YouTube, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 🍀 Google, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🐬 OneDrive, type: select, proxies: [♻️ 直连,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🪟 Microsoft, type: select, proxies: [直连,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 🎵 TikTok, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 📲 Telegram, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: ✈️ Speedtest, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 💶 PayPal, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
+  - {name: 🐬 OneDrive, type: select, proxies: [直连,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
+  - {name: 🪟 Microsoft, type: select, proxies: [直连,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 🍎 Apple, type: select, proxies: [直连,]}
   - {name: 🎯 直连, type: select, proxies: [直连,]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: ❌ 阻塞, type: select, proxies: [ 阻止,]}
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连|阻止)).)*$"}
   - {name: ♻️ 台湾自动, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台|TW|(?i)taiwan))^((?!(港|日|韩|新|美)).)*$" }
   - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
-  - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)日|jp|japan"}
-  - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states"}
-  - {name: 🌐 全部节点, type: select, include-all: true}
+  - {name: ❌ 阻塞, type: select, proxies: [阻止,]}
+  - {name: 🎯 直连, type: select, proxies: [直连,]}
 
+  
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
