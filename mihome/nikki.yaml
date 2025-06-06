@@ -76,7 +76,7 @@ rule-anchor:
 rule-providers: 
   adlite1: { <<: *class, url: "https://whatshub.top/rule/ADLite.list"}
   adlite2: { <<: *class, url: "https://whatshub.top/rule/Huawei.list"}
-  test: { <<: *class, url: "https://whatshub.top/rule/Huawei.list"}
+  test: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/nikki-test"}  #自用需要代理站点
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/proxy.list"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
