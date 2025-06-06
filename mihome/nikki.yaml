@@ -44,7 +44,9 @@ proxy-groups:
 rules:
   - RULE-SET,adlite1,❌ 阻止
   - RULE-SET,adlite2,❌ 阻止
+  - RULE-SET,test,🚀 默认代理
   - RULE-SET,private_domain,🎯 直连
+  - RULE-SET,cn_ip,🎯 直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,ai,🤖 ChatGPT
@@ -64,7 +66,6 @@ rules:
   - RULE-SET,google_ip,🍀 Google,no-resolve
   - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
-  - RULE-SET,cn_ip,🎯 直连
   - MATCH,🐟 漏网之鱼
 
 # 规则集
@@ -75,6 +76,7 @@ rule-anchor:
 rule-providers: 
   adlite1: { <<: *class, url: "https://whatshub.top/rule/ADLite.list"}
   adlite2: { <<: *class, url: "https://whatshub.top/rule/Huawei.list"}
+  test: { <<: *class, url: "https://whatshub.top/rule/Huawei.list"}
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/proxy.list"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
