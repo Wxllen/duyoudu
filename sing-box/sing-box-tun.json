@@ -114,12 +114,10 @@
      {"rule_set": "geosite-geolocation-!cn", "outbound": "🐸 手动切换"},
      {"rule_set": ["geoip-cn", "geosite-cn"], "outbound": "🎯 直连"}
      {"rule_set": ["adlite1", "adlite1"], "outbound": "❌ 阻止"}
-     {"rule_set": ["adlite2", "adlite2"], "outbound": "❌ 阻止"}
    ],
     
    "rule_set": [
     { "tag": "adlite1", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/category-ads-all.srs", "download_detour": "🚀 节点选择" },
-    { "tag": "adlite2", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-chat", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🚀 节点选择" },
     { "tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "🚀 节点选择" },
