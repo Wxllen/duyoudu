@@ -1,6 +1,6 @@
 proxy-providers:
   桀桀桀桀桀:
-    url: "约约约约约约"
+    url: "月月预约月"
     type: http
     interval: 86400
     health-check:
@@ -16,27 +16,28 @@ proxies:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🎯 直连, 🚀 默认代理,♻️ 自动选择,♻️ 台湾自动 , ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
+pr: &pr {type: select, proxies: [🎯 直连,♻️ 自动选择,♻️ 台湾自动 , ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [🎯 直连♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 📹 YouTube, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🍀 Google, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🎵 TikTok, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 📲 Telegram, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
+  - {name: 🐸 手动切换, type: select, include-all: true, filter: "^((?!(测试|直连|阻止|更新|下载)).)*$"}
+  - {name: 🐟 漏网之鱼, <<: *pr}
+  - {name: 🍎 Apple, type: select, proxies: [🎯 直连, 🐸 手动切换]}
+  - {name: 🐬 OneDrive, type: select, proxies: [🎯 直连, 🐸 手动切换]}
+  - {name: 🪟 Microsoft, type: select, proxies: [🎯 直连, 🐸 手动切换]}
+  - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动]}
+  - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动, 🐸 手动切换]}
+  - {name: 📹 YouTube, type: select, proxies: [♻️ 日本自动]}
+  - {name: 🍀 Google, type: select, proxies: [ ♻️ 日本自动]}
+  - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 美国自动]}
+  - {name: 🎵 TikTok, type: select, proxies: [♻️ 日本自动]}
+  - {name: 📲 Telegram, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: ✈️ Speedtest, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
   - {name: 💶 PayPal, type: select, proxies: [♻️ 自动选择,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🐬 OneDrive, type: select, proxies: [🎯 直连,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🪟 Microsoft, type: select, proxies: [🎯 直连,♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
-  - {name: 🍎 Apple, type: select, proxies: [🎯 直连,🚀 默认代理]}
-  - {name: 🐟 漏网之鱼, <<: *pr}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连|阻止|测试|更新|下载)).)*$"}
   - {name: ♻️ 台湾自动, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(台|TW|(?i)taiwan))^((?!(港|日|韩|新|美)).)*$" }
   - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$"}
   - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$" }
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
+ 
 
   
 # 规则匹配
@@ -44,11 +45,11 @@ proxy-groups:
 rules:
   - RULE-SET,adlite1,❌ 阻止
   - RULE-SET,adlite2,❌ 阻止
-  - RULE-SET,test,🚀 默认代理
+  - RULE-SET,test,🐸 手动切换
   - RULE-SET,private_domain,🎯 直连
   - RULE-SET,cn_ip,🎯 直连
   - RULE-SET,apple_domain,🍎 Apple
-  - RULE-SET,proxylite,🚀 默认代理
+  - RULE-SET,proxylite,♻️ 自动选择
   - RULE-SET,ai,🤖 ChatGPT
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
@@ -60,8 +61,8 @@ rules:
   - RULE-SET,telegram_domain,📲 Telegram
   - RULE-SET,netflix_domain,🎥 NETFLIX
   - RULE-SET,paypal_domain,💶 PayPal
-  - RULE-SET,gfw_domain,🚀 默认代理
-  - RULE-SET,geolocation-!cn,🚀 默认代理
+  - RULE-SET,gfw_domain,🐟 漏网之鱼
+  - RULE-SET,geolocation-!cn,🐟 漏网之鱼
   - RULE-SET,cn_domain,🎯 直连
   - RULE-SET,google_ip,🍀 Google,no-resolve
   - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
