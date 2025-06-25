@@ -45,6 +45,7 @@ proxy-groups:
 rules:
   - RULE-SET,adlite1,❌ 阻止
   - RULE-SET,adlite2,❌ 阻止
+  - RULE-SET,adlite3,❌ 阻止
   - RULE-SET,test,🐸 手动切换
   - RULE-SET,private_domain,🎯 直连
   - RULE-SET,cn_ip,🎯 直连
@@ -77,6 +78,7 @@ rule-anchor:
 rule-providers: 
   adlite1: { <<: *class, url: "https://whatshub.top/rule/ADLite.list"}
   adlite2: { <<: *class, url: "https://whatshub.top/rule/Huawei.list"}
+  adlite2: { <<: *class, url: "https://whatshub.top/rule/Sogou.list"}
   test: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/nikki-test"}  #自用需要代理站点
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/proxy.list"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
