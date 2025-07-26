@@ -26,7 +26,7 @@ proxy-groups:
   - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动]}
   - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动, 🐸 手动切换]}
   - {name: 📹 YouTube, type: select, proxies: [♻️ 日本自动]}
-  - {name: 🍀 Google, type: select, proxies: [ ♻️ 日本自动]}
+  - {name: 🍀 Google, type: select, proxies: [♻️ 日本自动]}
   - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 美国自动]}
   - {name: 🎵 TikTok, type: select, proxies: [♻️ 日本自动]}
   - {name: 📲 Telegram, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
