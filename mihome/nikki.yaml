@@ -11,20 +11,21 @@ proxy-providers:
 
 # 节点信息
 proxies:
-  - {name: 🎯 直连, type: direct}
+  - {name: 🚀 直连, type: direct}
   - {name: ❌ 阻止, type: reject}
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🎯 直连, ♻️ 自动选择, ♻️ 台湾自动 , ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
+pr: &pr {type: select, proxies: [🚀 直连, ❌ 阻止, ♻️ 自动选择, ♻️ 台湾自动, ♻️ 香港自动, ♻️ 日本自动, ♻️ 美国自动]}
 proxy-groups:
   - {name: 🐸 手动切换, type: select, include-all: true, filter: "^((?!(测试|直连|阻止|更新|下载)).)*$"}
   - {name: 🐟 漏网之鱼, <<: *pr}
-  - {name: 🍎 Apple, type: select, proxies: [🎯 直连, 🐸 手动切换]}
-  - {name: 🐬 OneDrive, type: select, proxies: [🎯 直连, 🐸 手动切换]}
-  - {name: 🪟 Microsoft, type: select, proxies: [🎯 直连, 🐸 手动切换]}
+  - {name: 🎯 中华大陆, <<: *pr}
+  - {name: 🍎 Apple, type: select, proxies: [🚀 直连, 🐸 手动切换]}
+  - {name: 🐬 OneDrive, type: select, proxies: [🚀 直连, 🐸 手动切换]}
+  - {name: 🪟 Microsoft, type: select, proxies: [🚀 直连, 🐸 手动切换]}
   - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动]}
-  - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动, 🐸 手动切换]}
+  - {name: 👨🏿‍💻 GitHub, type: select, proxies: [♻️ 台湾自动, ♻️ 香港自动]}
   - {name: 📹 YouTube, type: select, proxies: [♻️ 日本自动]}
   - {name: 🍀 Google, type: select, proxies: [♻️ 日本自动]}
   - {name: 🤖 ChatGPT, type: select, proxies: [♻️ 美国自动]}
@@ -47,8 +48,8 @@ rules:
   - RULE-SET,adlite2,❌ 阻止
   - RULE-SET,adlite3,❌ 阻止
   - RULE-SET,test,🐸 手动切换
-  - RULE-SET,private_domain,🎯 直连
-  - RULE-SET,cn_ip,🎯 直连
+  - RULE-SET,private_domain,🚀 直连
+  - RULE-SET,cn_ip,🎯 中华大陆
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,♻️ 自动选择
   - RULE-SET,ai,🤖 ChatGPT
@@ -64,7 +65,7 @@ rules:
   - RULE-SET,paypal_domain,💶 PayPal
   - RULE-SET,gfw_domain,🐟 漏网之鱼
   - RULE-SET,geolocation-!cn,🐟 漏网之鱼
-  - RULE-SET,cn_domain,🎯 直连
+  - RULE-SET,cn_domain,🎯 中华大陆
   - RULE-SET,google_ip,🍀 Google,no-resolve
   - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
@@ -79,7 +80,7 @@ rule-providers:
   adlite1: { <<: *class, url: "https://whatshub.top/rule/ADLite.list"}
   adlite2: { <<: *class, url: "https://whatshub.top/rule/Huawei.list"}
   adlite2: { <<: *class, url: "https://whatshub.top/rule/Sogou.list"}
-  test: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/nikki-test"}  #自用需要代理站点
+  test: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/nikki-test.list"}  #自用需要代理站点
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/Wxllen/duyoudu/refs/heads/main/proxy.list"}
   cn_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"}
   cn_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"}
