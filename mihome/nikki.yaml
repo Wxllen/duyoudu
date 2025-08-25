@@ -1,5 +1,5 @@
 proxy-providers:
-  桀桀桀桀桀:
+  Airport1:
     url: "月月预约月"
     type: http
     interval: 86400
